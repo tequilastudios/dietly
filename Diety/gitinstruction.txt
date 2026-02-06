@@ -1,0 +1,72 @@
+Dietly - Git Instructions (Mac)
+Project developed by Tommaso Carlotti
+=========================================
+
+1) Prerequisites
+- macOS with Terminal
+- Git installed (`git --version`)
+- Docker Desktop installed and running
+- Ollama installed and running
+
+2) Clone the repository
+```bash
+git clone <YOUR_GITHUB_REPO_URL>.git
+cd Diety
+```
+
+3) (Optional but recommended) Create your own branch
+```bash
+git checkout -b my-local-setup
+```
+
+4) Ensure required Ollama models are available
+```bash
+ollama list
+ollama pull llava:latest
+ollama pull mistral:latest
+```
+
+5) Start the application stack
+```bash
+docker compose up --build
+```
+
+6) Open the app
+- URL: http://localhost:8000
+
+7) Common commands
+- Stop services:
+```bash
+docker compose down
+```
+- Stop and remove DB volume (clean reset):
+```bash
+docker compose down -v
+```
+- Restart backend only:
+```bash
+docker compose restart backend
+```
+- View backend logs:
+```bash
+docker compose logs -f backend
+```
+
+8) Security checklist before push
+- Do not commit personal credentials, tokens, or test passwords.
+- Do not commit private dataset/photos.
+- If needed, replace default secrets (for example JWT secret) before production usage.
+
+9) Prepare commit and push
+```bash
+git add .
+git commit -m "Setup and updates for Dietly"
+git push origin <YOUR_BRANCH_NAME>
+```
+
+10) License and attribution
+- License file: `license.txt` (non-commercial, bilingual IT/EN).
+- Commercial licensing contact: tequilastudios@gmail.com
+- Keep attribution notice in redistributed copies:
+  "Project developed by Tommaso Carlotti"
+

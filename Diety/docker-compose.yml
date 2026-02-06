@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: dietly-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dietly
+      MYSQL_USER: dietly
+      MYSQL_PASSWORD: dietlypass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-udietly", "-pdietlypass"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    container_name: dietly-backend
+    restart: unless-stopped
+    environment:
+      APP_NAME: Dietly
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: dietly
+      DB_USER: dietly
+      DB_PASSWORD: dietlypass
+      JWT_SECRET: super-secret-change-me
+      JWT_EXPIRE_MINUTES: 1440
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      OLLAMA_MODEL: llava:latest
+      OLLAMA_TEXT_MODEL: mistral:latest
+      OLLAMA_TIMEOUT: 180
+      UPLOAD_DIR: /app/static/uploads
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/static:/app/static
+    depends_on:
+      db:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  mysql_data:

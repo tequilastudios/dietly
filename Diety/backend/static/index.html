@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <!-- Project developed by Tommaso Carlotti -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dietly</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="icon" type="image/png" href="/static/logo.png" />
+  </head>
+  <body>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+
+    <main class="shell">
+      <header class="hero card">
+        <div class="hero-head">
+          <div class="brand">
+            <img class="brand-logo" src="/static/logo.png" alt="Dietly logo" />
+            <div>
+              <p class="chip">Dietly AI Nutrition Planner</p>
+              <h1>Dietly</h1>
+              <p>
+                Traccia i pasti, analizza foto con Ollama, imposta la tua routine e ottieni un riepilogo intelligente a
+                fine giornata.
+              </p>
+            </div>
+          </div>
+          <button id="navToggleBtn" class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <nav id="mainMenu" class="menu" aria-label="Navigazione principale">
+          <a class="guest-only" href="#landingHero">Home</a>
+          <a class="guest-only" href="#landingBenefits">Benefici</a>
+          <a class="guest-only" href="#landingHow">Come funziona</a>
+          <a class="guest-only" href="#landingProof">Risultati</a>
+          <a class="guest-only" href="#authSection">Accedi</a>
+          <a class="guest-only cta" href="#registerForm">Inizia gratis</a>
+
+          <a class="auth-only" href="#scanSection">Scatta e analizza</a>
+          <a class="auth-only" href="#routineSection">Routine</a>
+          <a class="auth-only" href="#mealSection">Pasti</a>
+          <a class="auth-only" href="#diarySection">Registro</a>
+          <a class="auth-only" href="#summarySection">Riepilogo</a>
+          <a id="navSettingsLink" class="auth-only hidden" href="/settings">Impostazioni</a>
+          <button id="navLogoutBtn" class="auth-only menu-logout hidden" type="button">Esci</button>
+        </nav>
+      </header>
+
+      <section id="flash" class="flash hidden"></section>
+
+      <section id="landingSection" class="landing">
+        <article id="landingHero" class="card landing-hero">
+          <div class="landing-copy">
+            <p class="chip">Dietly per chi vuole risultati concreti</p>
+            <h2>Organizza la tua dieta con l'AI locale, in pochi secondi.</h2>
+            <p>
+              Scatta una foto del pasto, Dietly riconosce tipologia, stima macro e aggiorna il registro. A fine
+              giornata ricevi un riepilogo intelligente pensato per i tuoi obiettivi.
+            </p>
+            <div class="landing-cta">
+              <a class="cta-btn" href="#registerForm">Inizia gratis</a>
+              <a class="ghost-btn" href="#landingHow">Guarda come funziona</a>
+            </div>
+            <div class="trust-row">
+              <span class="trust-chip">AI locale con Ollama</span>
+              <span class="trust-chip">Dati protetti e personali</span>
+              <span class="trust-chip">Senza carta di credito</span>
+            </div>
+          </div>
+          <div class="landing-media">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Food-salad-healthy-colorful_%2824242433051%29.jpg"
+              alt="Insalata fresca con ingredienti colorati"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div class="floating-card">
+              <p class="floating-title">Oggi</p>
+              <div class="floating-grid">
+                <div>
+                  <strong>1</strong>
+                  <span>pasto</span>
+                </div>
+                <div>
+                  <strong>480</strong>
+                  <span>kcal</span>
+                </div>
+                <div>
+                  <strong>35g</strong>
+                  <span>proteine</span>
+                </div>
+                <div>
+                  <strong>60g</strong>
+                  <span>carbo</span>
+                </div>
+              </div>
+              <p class="floating-note">Riepilogo in tempo reale, tutto in un'unica vista.</p>
+            </div>
+          </div>
+        </article>
+
+        <div id="landingBenefits" class="landing-grid">
+          <article class="card feature-card">
+            <span class="feature-icon">⚡️</span>
+            <h3>Compilazione automatica</h3>
+            <p>Nome piatto, tipologia e macro stimati a partire da una singola foto.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="feature-icon">🎯</span>
+            <h3>Routine su misura</h3>
+            <p>Imposta orari e target nutrizionali, Dietly ti aiuta a rispettarli.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="feature-icon">🤝</span>
+            <h3>Consigli intelligenti</h3>
+            <p>Riepiloghi giornalieri con suggerimenti basati sui tuoi obiettivi reali.</p>
+          </article>
+        </div>
+
+        <article id="landingHow" class="card landing-steps">
+          <div>
+            <h2>Come funziona Dietly</h2>
+            <p class="muted">Tre passaggi per trasformare la tua alimentazione in dati chiari e utili.</p>
+          </div>
+          <div class="steps-grid">
+            <div class="step-card">
+              <span class="step-number">1</span>
+              <h3>Scatta o carica</h3>
+              <p>Usa la fotocamera o carica l'immagine del tuo piatto.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">2</span>
+              <h3>Dietly analizza</h3>
+              <p>La visione AI riconosce il pasto e precompila i macro.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">3</span>
+              <h3>Ricevi il riepilogo</h3>
+              <p>A fine giornata ottieni consigli pratici in base ai tuoi obiettivi.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="landingProof" class="card landing-proof">
+          <div>
+            <h2>Pronto per i tuoi obiettivi</h2>
+            <p class="muted">
+              Dietly è progettata per aiutarti a mantenere costanza, con un flusso semplice e dati leggibili.
+            </p>
+            <div class="proof-list">
+              <div>
+                <strong>Registrazione rapida</strong>
+                <span>Dal piatto al registro in pochi secondi.</span>
+              </div>
+              <div>
+                <strong>AI configurabile</strong>
+                <span>Seleziona i tuoi modelli e il livello di dettaglio.</span>
+              </div>
+              <div>
+                <strong>Riepilogo personalizzato</strong>
+                <span>Consigli basati su età, obiettivi, preferenze e allergie.</span>
+              </div>
+            </div>
+          </div>
+          <div class="proof-card">
+            <h3>Il tuo check quotidiano</h3>
+            <p class="muted">Tieni traccia di macro e progressi senza perdere tempo.</p>
+            <div class="proof-stats">
+              <div>
+                <strong>Macro sotto controllo</strong>
+                <span>Calorie, P/C/F sempre visibili.</span>
+              </div>
+              <div>
+                <strong>Routine guidata</strong>
+                <span>Orari dei pasti e fine giornata automatica.</span>
+              </div>
+            </div>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Food-salad-healthy-lunch_%2824029103260%29.jpg"
+              alt="Piatto healthy con ingredienti freschi"
+              loading="lazy"
+            />
+          </div>
+        </article>
+
+        <article class="card landing-final">
+          <div>
+            <h2>Inizia a usare Dietly oggi</h2>
+            <p class="muted">
+              Crea un account gratuito e imposta i tuoi obiettivi. Inizia a monitorare i pasti in modo smart.
+            </p>
+          </div>
+          <div class="landing-cta">
+            <a class="cta-btn" href="#registerForm">Crea account</a>
+            <a class="ghost-btn" href="#loginForm">Ho gia un account</a>
+          </div>
+        </article>
+
+        <p class="image-credit">
+          Foto da <a href="https://commons.wikimedia.org/wiki/File:Food-salad-healthy-colorful_(24242433051).jpg" target="_blank" rel="noopener">Wikimedia Commons</a> e
+          <a href="https://commons.wikimedia.org/wiki/File:Food-salad-healthy-lunch_(24029103260).jpg" target="_blank" rel="noopener">Wikimedia Commons</a> (licenza CC0).
+        </p>
+      </section>
+
+      <section id="authSection" class="auth-grid">
+        <article class="card">
+          <h2>Accedi</h2>
+          <form id="loginForm" class="stack">
+            <label>Email
+              <input id="loginEmail" type="email" required />
+            </label>
+            <label>Password
+              <input id="loginPassword" type="password" required minlength="6" maxlength="72" />
+            </label>
+            <button type="submit">Entra</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Registrati</h2>
+          <form id="registerForm" class="stack">
+            <label>Nome completo
+              <input id="registerName" type="text" required minlength="2" />
+            </label>
+            <label>Email
+              <input id="registerEmail" type="email" required />
+            </label>
+            <label>Password
+              <input id="registerPassword" type="password" required minlength="6" maxlength="72" />
+            </label>
+            <button type="submit">Crea account</button>
+          </form>
+        </article>
+      </section>
+
+      <section id="dashboard" class="hidden">
+        <article id="scanSection" class="card capture-card">
+          <div class="capture-copy">
+            <div class="capture-head">
+              <div>
+                <h3 id="welcomeTitle" class="section-title">
+                  <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 2c4.4 0 8 3.1 8 7s-3.6 7-8 7-8-3.1-8-7 3.6-7 8-7z" />
+                    <path d="M5 22c1.7-3 4.4-5 7-5s5.3 2 7 5" />
+                  </svg>
+                  Ciao, bentornato
+                </h3>
+                <p class="muted">Monitora giorno per giorno i macro assunti.</p>
+              </div>
+              <a id="quickSettingsLink" class="settings-link" href="/settings">Apri impostazioni AI</a>
+            </div>
+            <h2 class="section-title">
+              <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 7h3l2-3h6l2 3h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z" />
+                <circle cx="12" cy="13" r="3.5" />
+              </svg>
+              1) Scatta o carica foto del pasto
+            </h2>
+            <p>
+              Carica una foto e Dietly compila automaticamente nome piatto, macro stimati e tipologia pasto
+              (colazione, pranzo, cena o snack).
+            </p>
+          </div>
+          <form id="quickCaptureForm" class="capture-form">
+            <label>Foto pasto
+              <input id="quickImage" type="file" accept="image/*" capture="environment" required />
+            </label>
+            <label>Dettagli opzionali
+              <input id="quickHint" type="text" placeholder="Es: porzione abbondante, ricetta home-made" />
+            </label>
+            <button id="quickAnalyzeBtn" type="submit">Analizza e compila tutto</button>
+          </form>
+        </article>
+
+        <div class="grid">
+          <article id="routineSection" class="card">
+            <h3 class="section-title">
+              <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="8" />
+                <path d="M12 8v4l3 2" />
+              </svg>
+              Routine giornaliera
+            </h3>
+            <form id="routineForm" class="stack">
+              <div class="inline-fields">
+                <label>Colazione
+                  <input id="breakfastTime" type="time" />
+                </label>
+                <label>Pranzo
+                  <input id="lunchTime" type="time" />
+                </label>
+                <label>Cena
+                  <input id="dinnerTime" type="time" />
+                </label>
+                <label>Fine giornata
+                  <input id="dayEndTime" type="time" />
+                </label>
+              </div>
+
+              <div class="inline-fields">
+                <label>Target kcal
+                  <input id="targetCalories" type="number" min="0" step="1" />
+                </label>
+                <label>Target proteine (g)
+                  <input id="targetProteins" type="number" min="0" step="0.1" />
+                </label>
+                <label>Target carboidrati (g)
+                  <input id="targetCarbs" type="number" min="0" step="0.1" />
+                </label>
+                <label>Target grassi (g)
+                  <input id="targetFats" type="number" min="0" step="0.1" />
+                </label>
+              </div>
+
+              <button type="submit">Salva routine</button>
+            </form>
+          </article>
+
+          <article id="mealSection" class="card">
+            <div class="list-header">
+              <h3 id="mealFormTitle" class="section-title">
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4v10a2 2 0 0 0 2 2h2" />
+                  <path d="M8 4v8" />
+                  <path d="M12 4h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-6" />
+                  <path d="M14 9h4" />
+                  <path d="M14 13h4" />
+                </svg>
+                Registra pasto
+              </h3>
+              <button id="cancelEditMealBtn" class="hidden" type="button">Annulla modifica</button>
+            </div>
+            <form id="mealForm" class="stack">
+              <div class="inline-fields">
+                <label>Tipo pasto
+                  <select id="mealType" required>
+                    <option value="breakfast">Colazione</option>
+                    <option value="lunch">Pranzo</option>
+                    <option value="dinner">Cena</option>
+                    <option value="snack">Snack</option>
+                    <option value="other">Altro</option>
+                  </select>
+                </label>
+                <label>Data e ora
+                  <input id="consumedAt" type="datetime-local" required />
+                </label>
+              </div>
+
+              <label>Nome alimento/pasto
+                <input id="foodName" type="text" required />
+              </label>
+
+              <label>Note (opzionale)
+                <textarea id="mealNotes" rows="3" placeholder="Esempio: pasta al pomodoro, porzione media"></textarea>
+              </label>
+
+              <div id="manualBuilderSection" class="manual-builder">
+                <div class="list-header">
+                  <h4 class="section-title">
+                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 5v14" />
+                      <path d="M5 12h14" />
+                    </svg>
+                    Modalita manuale ingredienti
+                  </h4>
+                  <button id="addMealItemBtn" type="button">+ Aggiungi voce</button>
+                </div>
+                <p class="muted">
+                  Inserisci ingredienti e porzioni: Dietly stima automaticamente i macro complessivi.
+                </p>
+                <div id="mealItemsList" class="meal-items-list"></div>
+                <p id="manualEstimateStatus" class="muted"></p>
+              </div>
+
+              <div class="inline-fields">
+                <label>Calorie
+                  <input id="mealCalories" type="number" min="0" step="0.1" />
+                </label>
+                <label>Proteine (g)
+                  <input id="mealProteins" type="number" min="0" step="0.1" />
+                </label>
+                <label>Carboidrati (g)
+                  <input id="mealCarbs" type="number" min="0" step="0.1" />
+                </label>
+                <label>Grassi (g)
+                  <input id="mealFats" type="number" min="0" step="0.1" />
+                </label>
+              </div>
+
+              <div class="actions">
+                <span class="help-text">I campi vengono precompilati dalla foto analizzata in alto.</span>
+                <button id="saveMealBtn" type="submit">Salva pasto</button>
+              </div>
+            </form>
+          </article>
+
+          <article id="diarySection" class="card full">
+            <div class="list-header">
+              <h3 class="section-title">
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 3h10a2 2 0 0 1 2 2v16H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+                  <path d="M9 7h6" />
+                  <path d="M9 11h6" />
+                  <path d="M9 15h4" />
+                </svg>
+                Registro giornaliero
+              </h3>
+              <div class="actions">
+                <label>
+                  Giorno
+                  <input id="filterDay" type="date" />
+                </label>
+                <button id="refreshDayBtn" type="button">Aggiorna</button>
+              </div>
+            </div>
+
+            <div id="totalsBar" class="totals"></div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Ora</th>
+                    <th>Tipo</th>
+                    <th>Pasto</th>
+                    <th>Kcal</th>
+                    <th>P</th>
+                    <th>C</th>
+                    <th>F</th>
+                    <th>Fonte</th>
+                    <th>Azioni</th>
+                  </tr>
+                </thead>
+                <tbody id="mealsBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article id="needsSection" class="card">
+              <h3 class="section-title">
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3l7 4v5c0 4.5-3.2 8.4-7 9-3.8-.6-7-4.5-7-9V7l7-4z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+                Fabbisogno giornaliero
+              </h3>
+              <p class="muted">Stima personalizzata basata sui tuoi dati e obiettivi.</p>
+              <div class="needs-grid">
+                <div class="ring-card">
+                  <div id="calorieRing" class="ring">
+                    <span id="calorieRingValue">0%</span>
+                  </div>
+                  <div>
+                    <strong>Calorie</strong>
+                    <p id="calorieNeed" class="muted">-- kcal</p>
+                  </div>
+                </div>
+                <div class="progress-list">
+                  <div class="progress-row">
+                    <div>
+                      <strong>Proteine</strong>
+                      <span id="proteinNeed" class="muted">-- g</span>
+                    </div>
+                    <div class="progress-bar"><span id="proteinBar"></span></div>
+                  </div>
+                  <div class="progress-row">
+                    <div>
+                      <strong>Carboidrati</strong>
+                      <span id="carbNeed" class="muted">-- g</span>
+                    </div>
+                    <div class="progress-bar"><span id="carbBar"></span></div>
+                  </div>
+                  <div class="progress-row">
+                    <div>
+                      <strong>Grassi</strong>
+                      <span id="fatNeed" class="muted">-- g</span>
+                    </div>
+                    <div class="progress-bar"><span id="fatBar"></span></div>
+                  </div>
+                </div>
+                <div class="progress-row water-row">
+                  <div>
+                    <strong>Idratazione</strong>
+                    <span id="waterNeed" class="muted">-- ml</span>
+                  </div>
+                  <div class="progress-bar"><span id="waterBar"></span></div>
+                </div>
+                <p id="needsNote" class="muted"></p>
+              </div>
+          </article>
+
+          <article id="timelineSection" class="card">
+              <h3 class="section-title">
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 5h16" />
+                  <path d="M4 12h16" />
+                  <path d="M4 19h16" />
+                </svg>
+                Timeline giornata
+              </h3>
+              <p class="muted">Indicatori su ritmo pasti e bilanciamento macro.</p>
+              <div id="timelineTrack" class="timeline-track"></div>
+              <p id="timelineHint" class="muted"></p>
+          </article>
+
+          <article id="summarySection" class="card full">
+            <div class="list-header">
+              <h3 class="section-title">
+                <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 4h10l4 4v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+                  <path d="M9 13h6" />
+                  <path d="M9 9h3" />
+                </svg>
+                Riepilogo intelligente giornata
+              </h3>
+              <button id="refreshSummaryBtn" type="button">Rigenera consigli</button>
+            </div>
+            <div id="summaryBox" class="summary-box">Seleziona un giorno per vedere il riepilogo.</div>
+          </article>
+        </div>
+      </section>
+
+      <div id="fabDock" class="fab-dock auth-only hidden">
+        <div id="aiStatusPill" class="ai-fab hidden" aria-hidden="true">
+          <span class="ai-dot"></span>
+          Dietly AI in corso
+        </div>
+        <button id="chatFabBtn" class="chat-fab" type="button" aria-label="Apri chat DietlyBot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15a4 4 0 0 1-4 4H7l-4 3V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+            <path d="M7.5 9h9" />
+            <path d="M7.5 13h6" />
+          </svg>
+          DietlyBot
+        </button>
+        <button id="waterQuickBtn" class="water-fab" type="button" aria-label="Aggiungi un bicchiere di acqua">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3C9 7 6 10 6 14a6 6 0 0 0 12 0c0-4-3-7-6-11z" />
+          </svg>
+          +250 ml
+        </button>
+      </div>
+
+      <div id="chatPanel" class="chat-panel hidden" aria-hidden="true">
+        <div class="chat-card">
+          <div class="chat-header">
+            <div>
+              <strong>DietlyBot</strong>
+              <p class="muted">Consigli personalizzati sul tuo percorso.</p>
+            </div>
+            <div class="chat-header-actions">
+              <button id="chatNewBtn" class="chat-new" type="button">Nuova chat</button>
+              <button id="chatCloseBtn" class="chat-close" type="button" aria-label="Chiudi chat">×</button>
+            </div>
+          </div>
+          <div class="chat-toolbar">
+            <label>Archivio chat
+              <select id="chatSessionSelect"></select>
+            </label>
+          </div>
+          <div id="chatMessages" class="chat-messages"></div>
+          <form id="chatForm" class="chat-form">
+            <input id="chatInput" type="text" placeholder="Scrivi un messaggio..." maxlength="2000" />
+            <button id="chatMicBtn" type="button" class="chat-mic" aria-label="Parla con microfono">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 1 1-6 0V6a3 3 0 0 1 3-3z" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                <path d="M12 19v3" />
+              </svg>
+            </button>
+            <button id="chatSendBtn" type="submit">Invia</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      Version 0.1 created by Tommaso Carlotti
+    </footer>
+
+    <div id="aiOverlay" class="ai-overlay hidden" aria-live="polite" aria-busy="true">
+      <div class="ai-overlay-card">
+        <div class="ai-orbit"></div>
+        <p id="aiOverlayText">Dietly AI sta elaborando...</p>
+      </div>
+    </div>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <!-- Project developed by Tommaso Carlotti -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dietly - Impostazioni AI</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="icon" type="image/png" href="/static/logo.png" />
+  </head>
+  <body>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+
+    <main class="shell settings-shell">
+      <header class="card settings-header">
+        <div class="settings-title">
+          <img class="brand-logo" src="/static/logo.png" alt="Dietly logo" />
+          <div>
+            <p class="chip">Pannello tecnico Dietly</p>
+            <h1>Impostazioni AI</h1>
+            <p id="settingsWelcome" class="muted">Configura modelli e parametri Ollama per la tua esperienza Dietly.</p>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="settings-link" href="/">Torna alla dashboard</a>
+          <button id="settingsLogoutBtn" class="danger" type="button">Esci</button>
+        </div>
+      </header>
+
+      <section id="flash" class="flash hidden"></section>
+
+      <section class="card">
+        <h2>Configurazione inferenza</h2>
+        <p class="muted settings-intro">
+          Questi parametri influenzano analisi immagini, stima nutrienti e consigli giornalieri.
+        </p>
+
+        <form id="settingsForm" class="stack">
+          <div class="settings-grid">
+            <label>Ollama base URL (opzionale)
+              <input id="ollamaBaseUrl" type="text" placeholder="http://host.docker.internal:11434" />
+            </label>
+
+            <label>Modello visione (foto)
+              <input id="visionModel" type="text" required placeholder="llava:latest" />
+            </label>
+            <label class="model-picker">Scegli modello visione installato
+              <select id="visionModelSelect">
+                <option value="">Carica prima i modelli installati</option>
+              </select>
+            </label>
+
+            <label>Modello testo (consigli)
+              <input id="textModel" type="text" required placeholder="mistral:latest" />
+            </label>
+            <label class="model-picker">Scegli modello testo installato
+              <select id="textModelSelect">
+                <option value="">Carica prima i modelli installati</option>
+              </select>
+            </label>
+
+            <label>Timeout richieste (secondi)
+              <input id="timeoutSeconds" type="number" min="30" max="600" step="1" required />
+            </label>
+
+            <label>Temperature (0 - 1.5)
+              <input id="temperature" type="number" min="0" max="1.5" step="0.05" required />
+            </label>
+
+            <label>Lingua risposte AI
+              <select id="responseLanguage">
+                <option value="it">Italiano</option>
+                <option value="en">Inglese</option>
+                <option value="es">Spagnolo</option>
+                <option value="fr">Francese</option>
+                <option value="de">Tedesco</option>
+              </select>
+            </label>
+
+            <label>Cicli ragionamento AI (1-4)
+              <input id="reasoningCycles" type="number" min="1" max="4" step="1" />
+            </label>
+          </div>
+
+          <label>Main prompt personalizzato
+            <textarea
+              id="systemPrompt"
+              rows="3"
+              placeholder="Definisci tono e priorita dell'AI (es. professionale, sintetico, orientato alla performance)."
+            ></textarea>
+          </label>
+
+          <h3>Dati personali e fisici</h3>
+          <div class="settings-grid">
+            <label>Eta (anni)
+              <input id="ageYears" type="number" min="10" max="120" step="1" />
+            </label>
+
+            <label>Sesso/genere (testo libero)
+              <input id="sex" type="text" placeholder="Es: uomo, donna, non binario" />
+            </label>
+
+            <label>Altezza (cm)
+              <input id="heightCm" type="number" min="80" max="250" step="0.1" />
+            </label>
+
+            <label>Peso attuale (kg)
+              <input id="weightKg" type="number" min="25" max="350" step="0.1" />
+            </label>
+
+            <label>Peso obiettivo (kg)
+              <input id="targetWeightKg" type="number" min="25" max="350" step="0.1" />
+            </label>
+
+            <label>Livello attivita
+              <select id="activityLevel">
+                <option value="">Non specificato</option>
+                <option value="sedentario">Sedentario</option>
+                <option value="leggero">Leggero</option>
+                <option value="moderato">Moderato</option>
+                <option value="alto">Alto</option>
+                <option value="molto_alto">Molto alto</option>
+              </select>
+            </label>
+          </div>
+
+          <label>Obiettivi personali
+            <textarea
+              id="goals"
+              rows="3"
+              placeholder="Es: dimagrire 4kg in 3 mesi, migliorare energia, ridurre fame serale"
+            ></textarea>
+          </label>
+
+          <label>Preferenze alimentari
+            <textarea
+              id="dietaryPreferences"
+              rows="2"
+              placeholder="Es: vegetariano, preferisco colazione salata, no latticini la sera"
+            ></textarea>
+          </label>
+
+          <label>Allergie / intolleranze
+            <textarea id="allergies" rows="2" placeholder="Es: glutine, arachidi, lattosio"></textarea>
+          </label>
+
+          <div class="settings-toggles">
+            <label class="check-row">
+              <input id="macroFallbackEnabled" type="checkbox" />
+              <span>Abilita fallback macro automatico se la foto non restituisce nutrienti.</span>
+            </label>
+
+            <label class="check-row">
+              <input id="mealTypeAutodetectEnabled" type="checkbox" />
+              <span>Abilita auto-rilevamento tipologia pasto (colazione/pranzo/cena/snack).</span>
+            </label>
+
+            <label class="check-row">
+              <input id="smartRoutineEnabled" type="checkbox" />
+              <span>Attiva routine smart AI (ottimizza orari e target se hai impostato obiettivi).</span>
+            </label>
+          </div>
+
+          <div class="settings-models-box">
+            <p id="modelsStatus" class="muted">
+              Carica i modelli installati su Ollama per scegliere rapidamente.
+            </p>
+            <button id="reloadModelsBtn" type="button">Rileva modelli installati</button>
+          </div>
+
+          <div class="actions">
+            <button type="submit">Salva impostazioni</button>
+            <button id="reloadSettingsBtn" type="button">Ricarica valori</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Foto corpo e progressi</h2>
+        <p class="muted settings-intro">
+          Carica foto frontale o posteriore: Dietly generera una descrizione e potrai confrontarle nel tempo.
+        </p>
+        <form id="bodyPhotoForm" class="stack">
+          <div class="inline-fields">
+            <label>Tipologia
+              <select id="bodyPhotoKind">
+                <option value="front">Fronte intero</option>
+                <option value="back">Retro intero</option>
+              </select>
+            </label>
+            <label>Foto corpo
+              <input id="bodyPhotoFile" type="file" accept="image/*" required />
+            </label>
+          </div>
+          <button type="submit">Carica foto</button>
+        </form>
+
+        <div id="bodyPhotoGallery" class="body-gallery"></div>
+
+        <div class="actions">
+          <button id="compareBodyBtn" type="button">Confronta ultimi scatti</button>
+        </div>
+        <p id="bodyCompareOutput" class="muted"></p>
+      </section>
+    </main>
+
+    <footer class="app-footer">Version 0.1 created by Tommaso Carlotti</footer>
+
+    <script src="/static/settings.js" defer></script>
+  </body>
+</html>

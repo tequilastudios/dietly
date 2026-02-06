@@ -1,0 +1,120 @@
+Dietly Non-Commercial License v1.0 (Italian + English)
+Project developed by Tommaso Carlotti
+Copyright (c) 2026 Tommaso Carlotti. All rights reserved.
+
+IMPORTANT
+By using, copying, modifying, or distributing this software, you accept this license.
+If you do not accept these terms, do not use this software.
+
+----------------------------------------------------------------
+ITALIAN VERSION
+----------------------------------------------------------------
+
+1) Definizioni
+- "Software": il progetto Dietly e tutti i suoi file sorgente, asset, script, documentazione e opere derivate.
+- "Uso commerciale": qualsiasi uso diretto o indiretto orientato a profitto, ricavo, vantaggio economico,
+  promozione di attivita commerciale o supporto a servizi a pagamento.
+
+2) Licenza concessa (solo non commerciale)
+Ti e concessa una licenza personale, non esclusiva, non trasferibile e revocabile per:
+- usare il Software;
+- copiare il Software;
+- modificarlo;
+- ridistribuirlo;
+esclusivamente per finalita personali, studio, ricerca o sperimentazione non commerciale.
+
+3) Divieti (senza autorizzazione scritta del titolare)
+E vietato:
+- vendere, sublicenziare, noleggiare o monetizzare il Software o opere derivate;
+- offrire il Software come servizio (SaaS/API/hosting) in contesti commerciali;
+- integrare il Software in prodotti o servizi commerciali;
+- usare il Software in attivita professionali o aziendali con ritorno economico;
+- rimuovere o alterare avvisi di copyright, paternita o licenza.
+
+4) Uso commerciale
+Per qualsiasi uso commerciale devi ottenere una licenza separata dal titolare:
+tequilastudios@gmail.com
+
+5) Attribuzione obbligatoria
+In ogni ridistribuzione (totale o parziale), inclusi fork e derivati, devi mantenere:
+- questo file di licenza;
+- l'indicazione di paternita:
+  "Project developed by Tommaso Carlotti"
+
+6) Marchi, nome e branding
+Nessun diritto sui marchi, loghi, naming o branding del progetto e concesso da questa licenza.
+
+7) Contributi
+Salvo accordi diversi scritti, i contributi inviati al progetto sono concessi al titolare
+con diritto di utilizzo, modifica e ridistribuzione coerente con questa licenza.
+
+8) Clausola di esclusione garanzie
+IL SOFTWARE E FORNITO "COSi COM'E", SENZA GARANZIE DI ALCUN TIPO, ESPRESSE O IMPLICITE,
+INCLUSO MA NON LIMITATO A COMMERCIABILITA, IDONEITA A UNO SCOPO SPECIFICO E NON VIOLAZIONE.
+
+9) Limitazione di responsabilita
+IN NESSUN CASO IL TITOLARE SARa RESPONSABILE PER DANNI DIRETTI, INDIRETTI, INCIDENTALI, SPECIALI,
+ESEMPLARI O CONSEQUENZIALI DERIVANTI DALL'USO O DALL'IMPOSSIBILITA DI USO DEL SOFTWARE.
+
+10) Risoluzione
+La violazione di questa licenza comporta la cessazione automatica e immediata dei diritti concessi.
+
+11) Legge applicabile
+Questa licenza e regolata dalla legge italiana.
+
+----------------------------------------------------------------
+ENGLISH VERSION
+----------------------------------------------------------------
+
+1) Definitions
+- "Software": the Dietly project and all source files, assets, scripts, documentation, and derivative works.
+- "Commercial Use": any direct or indirect use for profit, revenue, economic advantage,
+  business promotion, or support of paid services.
+
+2) License Grant (non-commercial only)
+You are granted a personal, non-exclusive, non-transferable, revocable license to:
+- use the Software;
+- copy the Software;
+- modify the Software;
+- redistribute the Software;
+strictly for personal, educational, research, or other non-commercial purposes.
+
+3) Restrictions (unless you have written permission from the owner)
+You may not:
+- sell, sublicense, rent, or monetize the Software or derivative works;
+- offer the Software as a service (SaaS/API/hosting) in commercial contexts;
+- integrate the Software into commercial products or services;
+- use the Software in professional or business operations that generate economic benefit;
+- remove or alter copyright, authorship, or license notices.
+
+4) Commercial Use
+For any commercial use, you must obtain a separate written commercial license from the owner:
+tequilastudios@gmail.com
+
+5) Mandatory Attribution
+In any redistribution (full or partial), including forks and derivatives, you must keep:
+- this license file;
+- the authorship notice:
+  "Project developed by Tommaso Carlotti"
+
+6) Trademarks, name, and branding
+This license grants no rights to trademarks, logos, naming, or project branding.
+
+7) Contributions
+Unless otherwise agreed in writing, contributions submitted to the project are granted to the owner
+with rights to use, modify, and redistribute consistently with this license.
+
+8) Disclaimer of Warranties
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+9) Limitation of Liability
+IN NO EVENT SHALL THE OWNER BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING FROM USE OR INABILITY TO USE THE SOFTWARE.
+
+10) Termination
+Any breach of this license automatically and immediately terminates the granted rights.
+
+11) Governing Law
+This license is governed by the laws of Italy.
+
